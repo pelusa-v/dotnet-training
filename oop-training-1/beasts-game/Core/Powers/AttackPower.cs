@@ -13,6 +13,11 @@ public class AttackPower : Power
         _plusDamage = plusDamage;
     }
 
+    public override string ActionDescription 
+    {
+        get => $"Deals {_damage} (possibly +{_plusDamage}) Health points of damage";
+    }
+
     public override void Use(Beast self, Beast target)
     {
         if (target == null)

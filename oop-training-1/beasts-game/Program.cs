@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using beasts_game.Game;
+
+var game = new Game();
+game.StartGame();

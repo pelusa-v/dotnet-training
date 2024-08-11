@@ -9,6 +9,14 @@ public class TrickPower : Power
         
     }
 
+    public override string ActionDescription
+    {
+        get
+        {
+            return "Trick";
+        }
+    }
+
     public override void Use(Beast self, Beast target = null)
     {
         throw new NotImplementedException();

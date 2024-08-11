@@ -10,21 +10,25 @@ public class Game
     public void StartGame()
     {
         Seed.CreateOwners();
-        Console.WriteLine("Welcome to Beasts world!");
+        Console.WriteLine("---- Welcome to Beasts world! ----");
         Thread.Sleep(2000);
         RequestOwner();
+        Thread.Sleep(2000);
+        AssignBeast();
+        Thread.Sleep(2000);
+        StartTutorialBattle();
     }
 
     private void RequestOwner()
     {
-        Console.WriteLine("Enter your name:");
+        Console.WriteLine("---- Enter your name: ----");
         string name = Console.ReadLine();
         _mainCharacter = new Owner(name);
     }
 
-    private void AssigningBeast()
+    private void AssignBeast()
     {
-        Console.WriteLine("Choose your beast:");
+        Console.WriteLine("---- Choose your beast: ----");
         for (int i = 0; i < Seed.BeastsPool.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {Seed.BeastsPool[i].Name}");
@@ -38,7 +42,16 @@ public class Game
         else
         {
             Console.WriteLine("Enter a valid beast number.");
-            AssigningBeast();
+            AssignBeast();
         }
+    }
+
+    private void StartTutorialBattle()
+    {
+        Console.WriteLine("---- Start tutorial battle: ----");
+        var npcIndex = new Random().Next(0, Seed.OwnersPool.Count() - 1);
+        Owner npc = Seed.OwnersPool[npcIndex];
+        Battle battle = new Battle(_mainCharacter, npc);
+        battle.Fight();
     }
 }

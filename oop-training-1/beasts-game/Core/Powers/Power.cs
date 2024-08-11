@@ -4,6 +4,7 @@ public abstract class Power
 {
     public string Name { get; set; }
     public string Description { get; set; }
+    public abstract string ActionDescription { get; }
 
     public Power(string name, string description)
     {

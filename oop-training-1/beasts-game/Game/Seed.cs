@@ -163,6 +163,22 @@ public class Seed
             restore: 28
         );
 
+        // 21. Mystic Fire
+        var mysticFire = new AttackPower(
+            name: "Mystic Fire",
+            description: "A mystical flame that burns with the essence of magic.",
+            damage: 50,
+            plusDamage: 30
+        );
+
+        // 22. Arcane Blast
+        var arcaneBlast = new AttackPower(
+            name: "Arcane Blast",
+            description: "A concentrated blast of arcane energy that disrupts the target's magic.",
+            damage: 45,
+            plusDamage: 25
+        );
+
         // Creating BeastStats for the beasts
         var beastStats1 = new BeastStats(experience: 100, experienceFactor: 1.5f, level: 5);
         var beastStats2 = new BeastStats(experience: 80, experienceFactor: 1.2f, level: 4);
@@ -300,8 +316,9 @@ public class Seed
             basicPowers: new List<Power>
             {
                 lifeDrain,
-                healingLight,
-                magicBarrier
+                magicBarrier,
+                mysticFire,
+                arcaneBlast
             }
         );
         
@@ -326,7 +343,9 @@ public class Seed
             magicBarrier,
             lifeDrain,
             spiritShield,
-            healingWave
+            healingWave,
+            mysticFire,
+            arcaneBlast
         };
 
         BeastsPool = new List<Beast>

@@ -12,6 +12,11 @@ public class DefensePower : Power
         _healthToRestore = restore;
     }
 
+    public override string ActionDescription 
+    {
+        get => $"Restore {_healthToRestore} Health points";
+    }
+
     public override void Use(Beast self, Beast target = null)
     {
         if (self == null)
