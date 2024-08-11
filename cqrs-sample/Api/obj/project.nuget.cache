@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "N+rXHyypkvvquqtdelPkVwX6uCJA8/6QI0agCuCXDqjk1//ilmBiJI/tTHb03LZH7GMyc4287dAr7zqIfvXchA==",
+  "dgSpecHash": "xgR3ql3uBusE9fzIsQkINiTWDUNsXhpMbjGyZ/UV+1D8oCPmLMgcTyvC/PL4NPXx+GFij5SbUrtSmfLcI/w15Q==",
   "success": true,
   "projectFilePath": "/Users/jp/Code/dotnet/dotnet-training/cqrs-sample/Api/Api.csproj",
   "expectedPackageFiles": [
