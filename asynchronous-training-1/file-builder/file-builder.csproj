@@ -3,13 +3,14 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>beasts_game</RootNamespace>
+    <RootNamespace>file_builder</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Utils/" />
+    <Folder Include="Docs/" />
+    <Folder Include="Logs/" />
   </ItemGroup>
 
 </Project>
