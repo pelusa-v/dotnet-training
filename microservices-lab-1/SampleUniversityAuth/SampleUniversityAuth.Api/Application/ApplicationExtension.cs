@@ -8,6 +8,7 @@ public static class ApplicationExtension
 {
     public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddScoped<IAuthService, AuthService>();
         // var jwtConfig = configuration.GetSection("Jwt");
         // var secretKey = Encoding.UTF8.GetBytes(jwtConfig["key"] ?? "");
         // var audience = jwtConfig["audience"] ?? "";

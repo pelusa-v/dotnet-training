@@ -1,8 +1,8 @@
 ﻿namespace SampleUniversityAuth.Api.Application.DTOs;
 
-public class RegisterDTO
+public class CreatedUserDTO
 {
-    public required string Password { get; set; }
+    public int Id { get; set; }
     public required string Email { get; set; }
     public required string FullName { get; set; }
 }
