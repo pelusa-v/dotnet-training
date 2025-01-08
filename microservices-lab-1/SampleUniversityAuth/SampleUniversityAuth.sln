@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUniversityAuth.Api", "SampleUniversityAuth.Api\SampleUniversityAuth.Api.csproj", "{1E197E78-88A0-40F8-ABBB-460D8B2943EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUniversityAuth.App", "SampleUniversityAuth.App\SampleUniversityAuth.App.csproj", "{85590A11-DF6A-4D3B-AB1A-D3B9C90601D2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +18,5 @@ Global
 		{1E197E78-88A0-40F8-ABBB-460D8B2943EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E197E78-88A0-40F8-ABBB-460D8B2943EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E197E78-88A0-40F8-ABBB-460D8B2943EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85590A11-DF6A-4D3B-AB1A-D3B9C90601D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85590A11-DF6A-4D3B-AB1A-D3B9C90601D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85590A11-DF6A-4D3B-AB1A-D3B9C90601D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85590A11-DF6A-4D3B-AB1A-D3B9C90601D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
