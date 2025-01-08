@@ -46,18 +46,23 @@ public class AuthService : IAuthService
 
     public async Task<CreatedUserDTO?> Register(RegisterDTO registerDTO)
     {
+        var role = await _roleManager.FindByNameAsync(registerDTO.Role);
+        if (role == null || role.Name == null)
+            return null;
+        
         var user = _mapper.Map<User>(registerDTO);
         var result = await _userManager.CreateAsync(user, registerDTO.Password);
-
         if (!result.Succeeded)
             return null;
-
+        
+        await _userManager.AddToRoleAsync(user, role.Name);
         return _mapper.Map<CreatedUserDTO>(user);
     }
 
     private string GenerateJwtToken(User user)
     {
         var jwtConfig = _configuration.GetSection("Jwt");
+        var a = jwtConfig["key"];
         var secretKey = Encoding.UTF8.GetBytes(jwtConfig["key"] ?? "");
         var audience = jwtConfig["audience"] ?? "";
         var issuer = jwtConfig["issuer"] ?? "";

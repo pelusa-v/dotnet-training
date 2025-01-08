@@ -1,3 +1,4 @@
+using SampleUniversityAuth.Api;
 using SampleUniversityAuth.Api.Application;
 using SampleUniversityAuth.Api.DataAccess;
 
@@ -10,7 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddDataAccess(builder.Configuration["Resources:DbConnection"]);
 
+builder.Services.AddEndpointsApiExplorer();
 var app = builder.Build();
+
+// Seed
+var serviceProvider = app.Services.CreateScope().ServiceProvider;
+await SeedData.SeedRoles(serviceProvider);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -23,6 +29,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.MapControllers();
 
 app.Run();
