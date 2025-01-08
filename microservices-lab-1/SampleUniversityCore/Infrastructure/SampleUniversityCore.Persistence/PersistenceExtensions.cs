@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SampleUniversityCore.Application.Repositories;
 using SampleUniversityCore.Persistence.Repositories;
@@ -7,11 +8,12 @@ namespace SampleUniversityCore.Persistence;
 
 public static class PersistenceExtensions
 {
-    public static void AddPersistence(this IServiceCollection services, string? connectionString)
+    public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<SampleUniversityDbContext>(options =>
         {
-            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            var connString = configuration["Resources:DbConnection"];
+            options.UseMySql(connString, ServerVersion.AutoDetect(connString));
         });
 
 

@@ -1,6 +1,7 @@
 using SampleUniversityCore.Persistence;
 using Microsoft.OpenApi.Models;
 using SampleUniversityCore.Application;
+using SampleUniversityCore.Api.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,15 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
-builder.Services.AddPersistence(builder.Configuration["Resources:DbConnection"]);
+builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddApplication();
+builder.Services.AddAuthConfiguration(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SampleUniversityCore API", Version = "v1" });
-});
-
 
 var app = builder.Build();
 
@@ -24,15 +21,17 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "SampleUniversityCore API v1");
+        c.SwaggerEndpoint("/openapi/v1.json", "SampleUniversityCore API v1");
         // c.RoutePrefix = string.Empty;
     });
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

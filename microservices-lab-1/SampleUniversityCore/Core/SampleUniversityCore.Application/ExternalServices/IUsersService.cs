@@ -2,5 +2,5 @@
 
 public interface IUsersService
 {
-    Task<int> CreateUser(CreateUserDTO user);
+    Task<string> CreateUser(CreateUserDTO user);
 }

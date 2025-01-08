@@ -2,6 +2,6 @@
 
 public class BasePerson : BaseEntity
 {
-    public int UserId { get; set; }
+    public string UserId { get; set; } = null!;
     public string FullName { get; set; } = null!;
 }
