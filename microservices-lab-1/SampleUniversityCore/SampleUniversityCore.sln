@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUniversityCore.Api", "Presentation\SampleUniversityCore.Api\SampleUniversityCore.Api.csproj", "{EB2A0447-BB8F-4E22-8EBD-2FAB4754DBA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUniversityCore.External", "Infrastructure\SampleUniversityCore.External\SampleUniversityCore.External.csproj", "{2E2B1DEB-8DAA-4015-A5E4-1FE463F0B12D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,11 +44,16 @@ Global
 		{EB2A0447-BB8F-4E22-8EBD-2FAB4754DBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB2A0447-BB8F-4E22-8EBD-2FAB4754DBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB2A0447-BB8F-4E22-8EBD-2FAB4754DBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E2B1DEB-8DAA-4015-A5E4-1FE463F0B12D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E2B1DEB-8DAA-4015-A5E4-1FE463F0B12D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E2B1DEB-8DAA-4015-A5E4-1FE463F0B12D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E2B1DEB-8DAA-4015-A5E4-1FE463F0B12D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{69E3301A-3E2D-4330-92EB-73552418E3DD} = {6047EA22-D799-4FB3-874A-6793F78BCEED}
 		{61D10307-D452-4570-BC63-B97A37DD8D91} = {6047EA22-D799-4FB3-874A-6793F78BCEED}
 		{A4501DC2-4F03-45AF-A3BB-876EE773F557} = {8DD6A1D4-B484-47E3-99DB-B8110FE88632}
 		{EB2A0447-BB8F-4E22-8EBD-2FAB4754DBA9} = {538FBFE9-5E6D-4A10-91F5-55BF6DFBD9DA}
+		{2E2B1DEB-8DAA-4015-A5E4-1FE463F0B12D} = {8DD6A1D4-B484-47E3-99DB-B8110FE88632}
 	EndGlobalSection
 EndGlobal

@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\SampleUniversityCore.Application\SampleUniversityCore.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\SampleUniversityCore.Persistence\SampleUniversityCore.Persistence.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\SampleUniversityCore.External\SampleUniversityCore.External.csproj" />
   </ItemGroup>
 
 </Project>

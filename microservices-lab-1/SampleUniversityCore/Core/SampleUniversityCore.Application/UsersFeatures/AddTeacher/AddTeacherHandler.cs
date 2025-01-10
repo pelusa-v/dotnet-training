@@ -23,8 +23,9 @@ public class AddTeacherHandler : IRequestHandler<AddTeacherCommand, AddTeacherDT
     {
         var teacher = _mapper.Map<Teacher>(request);
         var createUserReq = _mapper.Map<CreateUserDTO>(request);
-        var createdUserId = await _usersService.CreateUser(createUserReq);
+        
         // manage errors here, use retry policies, etc.
+        var createdUserId = await _usersService.CreateTeacherUser(createUserReq);
         teacher.UserId = createdUserId;
 
         await _teacherRepository.Create(teacher);
