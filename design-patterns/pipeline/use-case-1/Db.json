@@ -1,0 +1,67 @@
+
+{
+    "Users": [
+        {
+            "Id": 1,
+            "Name": "John Doe",
+            "Credit": 30.00
+        },
+        {
+            "Id": 2,
+            "Name": "Jane Smith",
+            "Credit": 50.00
+        },
+        {
+            "Id": 3,
+            "Name": "Alice Johnson",
+            "Credit": 100.00
+        },
+        {
+            "Id": 4,
+            "Name": "Bob Brown",
+            "Credit": 30.00
+        },
+        {
+            "Id": 5,
+            "Name": "Charlie Davis",
+            "Credit": 0.00
+        },
+        {
+            "Id": 6,
+            "Name": "Eve Wilson",
+            "Credit": 0.00
+        }
+    ],
+    "Products": [
+        {
+            "Id": 1,
+            "Name": "Apple",
+            "Price": 122.3
+        },
+        {
+            "Id": 2,
+            "Name": "Banana",
+            "Price": 98.70
+        },
+        {
+            "Id": 3,
+            "Name": "Cherry",
+            "Price": 150.00
+        },
+        {
+            "Id": 4,
+            "Name": "Date",
+            "Price": 58.50
+        },
+        {
+            "Id": 5,
+            "Name": "Elderberry",
+            "Price": 100.00
+        },
+        {
+            "Id": 6,
+            "Name": "Fig",
+            "Price": 99.99
+        }
+    ]
+}
