@@ -18,7 +18,7 @@ public class PurchaseService(PurchaseCalculationPipelineService purchaseCalculat
         
         purchasePipeline.Execute(process);
         
-        if (process.Error)
+        if (process.IsError)
             Console.WriteLine("Error in purchase process");
         
         return process;

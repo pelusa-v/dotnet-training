@@ -1,6 +1,6 @@
 ﻿namespace use_case_1;
 
-public class Pipeline<TData>
+public class Pipeline<TData> where TData : IPipelineError
 {
     private readonly List<Func<TData, TData>> _steps = new();
 
@@ -18,6 +18,8 @@ public class Pipeline<TData>
     {
         foreach (var step in _steps)
         {
+            if (data.IsError)
+                break;
             data = step(data);
         }
 

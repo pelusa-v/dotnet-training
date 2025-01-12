@@ -22,7 +22,7 @@ public class PurchaseController : ControllerBase
             ProductId = productId,
         };
         _purchaseService.ExecutePurchaseProcess(purchase);
-        if(purchase.Error)
+        if(purchase.IsError)
             return StatusCode(500, "Error in purchase process");
         return purchase;
     }

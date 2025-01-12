@@ -14,7 +14,7 @@ public class PurchaseCalculationPipelineService
         var product = _db.Products.Find(p => p.Id == purchaseProcess.ProductId);
         if (product == null)
         {
-            purchaseProcess.Error = true;
+            purchaseProcess.IsError = true;
             return purchaseProcess;
         }
 
@@ -43,7 +43,7 @@ public class PurchaseCalculationPipelineService
         var user = _db.Users.Find(u => u.Id == purchaseProcess.UserId);
         if (user == null)
         {
-            purchaseProcess.Error = true;
+            purchaseProcess.IsError = true;
             return purchaseProcess;
         }
 
