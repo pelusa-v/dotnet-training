@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oop-interview-test-1", "oop-interview-test-1\oop-interview-test-1.csproj", "{52BE8C77-53D4-44FF-A54C-CDD445FADEDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52BE8C77-53D4-44FF-A54C-CDD445FADEDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52BE8C77-53D4-44FF-A54C-CDD445FADEDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52BE8C77-53D4-44FF-A54C-CDD445FADEDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52BE8C77-53D4-44FF-A54C-CDD445FADEDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
