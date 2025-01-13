@@ -1,0 +1,241 @@
+OOP Interview Questions
+Theoretical Questions
+1- What are the four main principles of OOP? Can you explain each one with examples?
+2- How is abstraction different from encapsulation? Provide examples.
+3- What is polymorphism? Can you explain the difference between compile-time and runtime polymorphism?
+4- What is inheritance? How does it promote code reuse?
+5- Can you explain the concept of "dependency inversion" and how it relates to OOP?
+6- What are design patterns? Can you name and describe at least three common OOP design patterns?
+Scenario-Based Questions
+7- Imagine you’re building a system for an online bookstore. How would you model the Book, EBook, and AudioBook classes using OOP principles?
+8- You have a class Vehicle and classes Car and Truck that inherit from Vehicle. How would you ensure that a method StartEngine behaves differently for Car and Truck?
+9- Suppose you need to design a BankAccount class where users can deposit and withdraw money. How would you implement this class while ensuring security and data consistency?
+Code-Based Questions
+10- Write a simple class hierarchy for a shape system where Shape is the base class and Circle, Rectangle, and Triangle are derived classes. Include an abstract method for calculating the area.
+11- Given this class, explain what happens when you run the code:
+class Animal {
+    public virtual void Speak() {
+        Console.WriteLine("Animal speaks");
+    }
+}
+
+class Dog : Animal {
+    public override void Speak() {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+class Program {
+    static void Main(string[] args) {
+        Animal myAnimal = new Dog();
+        myAnimal.Speak();
+    }
+}
+12- How would you implement a singleton pattern in your preferred language? Write code to demonstrate.
+
+Solution!!!
+
+1- 
+Inheritance, Polymorphism, Encapsulation, Abstraction.
+Inheritance: The ability of an object to inherit properties and behavior from a parent class and make these as own.
+- Example: The classes Cat and Tiger inherit from the class Feline, they inherit properties like "numberOfPaws" or methods like lurk.
+
+Polymorphism: The ability of different objects to be treated as a general object, but having their own behavior and properties when you inspect their details (and they can have methods or properties with the same name, but different meaning depending of the object)
+- Example: The abstract class BarkAnimal, define an abstract method called Bark, there are two classes called Dog and Seal, the each of them implement the Bark method to emit a specific sound, so in other client class, I can define a List of BarkAnimal, and add a Dog and a Seal, and put them into a for loop to execute the Bark method. In this case, the client class doesn't know about the details of Bark method, and treats Dog and Seal as BarkAnimal, so Dog and Seal are applying polymorphism
+
+Encapsulation: The ability to group data and behavior into a class, keeping apart from other classes and having access level to this elements (properties, methods, etc)
+Example: The class Car has the method "Run" as public, and has a method "StartEngine" as private, I can use the Run method only after defining a Car Object. If I create a static class with methods, I need to call the class before to use the methods.
+
+Abstraction: The ability to not depending on the details of an object, just in the behaviors
+Example: I have a class PetShelter that has a method "PutToSleep" that receives a pet and execute, and I have other classes Dog, Cat, Turtle, Bird that hav a lot of properties and methods, but I'm interested in the Sleep method of them, so I can use an interface IPet that define a method Sleep, so Dog, Cat, Turtle and Bird implement this method. Now the PutToSleep method receive a IPet object, I'm saying that I will receive objects who have a Sleep method, depending only of the behavior of IPet and avoid depending on details
+
+2- Abstraction focus in representing a group of classes based on the behavior using interfaces of abstract classes meanwhile encapsulation focus in make properties and methods part of a class, giving the ability to be inherited from subclasses. Abstraction uses encapsulation
+Example:
+
+public class SpaceAngar
+{
+    // Encapsulation and Abstraction
+    public void DepartSpaceShip(IFlyingShip spaceShip)  // Abstraction
+    {
+        spaceShip.Depart();
+    }
+}
+
+public class StarPlane : IFlyingShip  // Abstraction
+{
+    // Encapsulation
+    public void Depart()
+    {
+        Console.WriteLine("StarPlane Departed");
+    }
+}
+
+public class ColossalRocket : IFlyingShip  // Abstraction
+{
+    // Encapsulation
+    public void Depart()
+    {
+        Console.WriteLine("ColossalRocket Departed");
+    }
+}
+
+public interface IFlyingShip
+{
+    // Encapsulation
+    void Depart();
+}
+
+3- I don't know
+4- It's the ability to inherit properties or behavior (the common ones) for other classes from a "base" class, this allows code reuse because I don't have to re-create some methods or properties that are already created, I can use it just inheriting from a parent class
+
+5- Yes, I can. Dependency inversion: classes shouldn't depend on implementations (classes), should depend on abstractions (interfaces or abstract classes), so based on this, if I have a class A that requires an object of class B in the constructor, applying dependency inversion, I create an abstraction called IB, and receive the IB in the constructor of A, so now A and B are depending on IB.
+Without dependency inversion:  A-->B (dependency flows from A to B)
+with dependency inversion:  A-->IB<--B (dependency flows from A to IB and B to IB, inverted dependency)
+
+6- They are well-structured and best practices aligned solutions for common scenarios in OOP, they can be Structural, Behavioral or Creational:
+- Strategy: When you need to execute different logic (algorithm) for a method based on an specific strategy
+- Builder: When you need to create a complex object with many properties and rules over them
+- Mediator: When you need to coordinate the interaction between objects using a "mediator" object to make all this organization
+
+7- 
+public abstract class Book
+{
+    public string Title { get; set; }
+    public string Author { get; set; }
+    public int Pages { get; set; }
+    public string ISBN { get; set; }
+}
+
+public class AudioBook : Book
+{
+    public string Narrator { get; set; }
+    public string Length { get; set; }
+    // some other methods
+}
+
+public class EBook : Book
+{
+    public string Format { get; set; }
+    public string Size { get; set; }
+    // some other methods
+}
+
+8-
+public abstract class Vehicle
+{
+    public abstract void StartEngine();
+}
+
+public class Car : Vehicle
+{
+    public override void StartEngine()
+    {
+        Console.WriteLine("Car Engine Started");
+    }
+}
+
+public class Truck : Vehicle
+{
+    public override void StartEngine()
+    {
+        Console.WriteLine("Truck Engine Started");
+    }
+}
+
+9-
+public class BankAccount
+{
+    private decimal _balance;
+    public decimal Balance { get { return _balance; } }
+
+    public void Deposit(decimal amount)
+    {
+        _balance += amount;
+    }
+
+    public void Withdraw(decimal amount)
+    {
+        _balance -= amount;
+    }
+
+    public BankAccount(decimal balance)
+    {
+        _balance = balance;
+    }
+}
+
+public class User
+{
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public BankAccount BankAccount { get; set; }
+}
+
+10-
+public abstract class Shape
+{
+    public abstract double Area();
+}
+
+public class Circle : Shape
+{
+    public double Radius { get; set; }
+    public override double Area()
+    {
+        return Math.PI * Radius * Radius;
+    }
+}
+
+public class Triangle : Shape
+{
+    public double Base { get; set; }
+    public double Height { get; set; }
+    public override double Area()
+    {
+        return 0.5 * Base * Height;
+    }
+}
+
+public class Rectangle : Shape
+{
+    public double Width { get; set; }
+    public double Height { get; set; }
+    public override double Area()
+    {
+        return Width * Height;
+    }
+}
+
+11- It prints "Dog barks" in console because you're defining a Dog (calling the Dog constructor), that's also an Animal class because Dog inherit from Animal, but defining the Animal as a Dog, the Speak method is the Dog method.
+
+12- C#
+public class Singleton
+{
+    private static Singleton _instance;
+    private static readonly object _lock = new object();
+
+    private Singleton()
+    {
+    }
+
+    public static Singleton Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                lock (_lock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new Singleton();
+                    }
+                }
+            }
+
+            return _instance;
+        }
+    }
+}
+
