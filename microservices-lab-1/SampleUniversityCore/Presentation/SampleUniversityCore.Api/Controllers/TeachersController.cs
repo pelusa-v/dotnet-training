@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SampleUniversityCore.Application.UsersFeatures.AddTeacher;
+using SampleUniversityCore.Application.FeaturesUsers.AddTeacher;
 
 namespace SampleUniversityCore.Api;
 
@@ -18,7 +18,7 @@ public class TeachersController : ControllerBase
 
     [Authorize(Roles = "admin")]
     [HttpPost]
-    public async Task<ActionResult<AddTeacherDTO>> CreateTeacher([FromBody] AddTeacherCommand command, CancellationToken cancellationToken)
+    public async Task<ActionResult<TeacherDTO>> CreateTeacher([FromBody] AddTeacherCommand command, CancellationToken cancellationToken)
     {
         var res = await _mediator.Send(command, cancellationToken);
         return Ok(res);

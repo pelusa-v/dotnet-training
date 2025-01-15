@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace SampleUniversityCore.Application.UsersFeatures.AddTeacher;
+namespace SampleUniversityCore.Application.FeaturesUsers.AddTeacher;
 
-public class AddTeacherCommand : IRequest<AddTeacherDTO>
+public class AddTeacherCommand : IRequest<TeacherDTO>
 {
     public required string FullName { get; set; }
     public required string Email { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using SampleUniversityCore.Application.Repositories;
+using SampleUniversityCore.Application.Services;
+using SampleUniversityCore.Application.Validators;
 
 namespace SampleUniversityCore.Application;
 
@@ -11,5 +11,8 @@ public static class ApplicationExtensions
     {
         services.AddAutoMapper(typeof(UsersMapper));
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+        services.AddScoped<ICourseSectionService, CourseSectionService>();
+        services.AddScoped<IEntityBasicValidatorService, EntityBasicValidatorService>();
     }
 }

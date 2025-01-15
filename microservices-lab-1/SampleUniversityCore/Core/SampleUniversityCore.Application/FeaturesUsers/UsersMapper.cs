@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SampleUniversityCore.Application.ExternalServices;
-using SampleUniversityCore.Application.UsersFeatures.AddTeacher;
+using SampleUniversityCore.Application.FeaturesUsers.AddTeacher;
 using SampleUniversityCore.Domain.Entities;
 
 namespace SampleUniversityCore.Application;
@@ -11,6 +11,6 @@ public class UsersMapper : Profile
     {
         CreateMap<AddTeacherCommand, Teacher>();
         CreateMap<AddTeacherCommand, CreateUserDTO>();
-        CreateMap<Teacher, AddTeacherDTO>();
+        CreateMap<Teacher, TeacherDTO>();
     }
 }

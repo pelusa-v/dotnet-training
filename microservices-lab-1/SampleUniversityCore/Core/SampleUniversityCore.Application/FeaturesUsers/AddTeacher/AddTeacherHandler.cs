@@ -4,9 +4,9 @@ using SampleUniversityCore.Application.ExternalServices;
 using SampleUniversityCore.Application.Repositories;
 using SampleUniversityCore.Domain.Entities;
 
-namespace SampleUniversityCore.Application.UsersFeatures.AddTeacher;
+namespace SampleUniversityCore.Application.FeaturesUsers.AddTeacher;
 
-public class AddTeacherHandler : IRequestHandler<AddTeacherCommand, AddTeacherDTO>
+public class AddTeacherHandler : IRequestHandler<AddTeacherCommand, TeacherDTO>
 {
     private readonly IMapper _mapper;
     private readonly ITeacherRepository _teacherRepository;
@@ -19,7 +19,7 @@ public class AddTeacherHandler : IRequestHandler<AddTeacherCommand, AddTeacherDT
         _usersService = usersService;
     }
 
-    public async Task<AddTeacherDTO> Handle(AddTeacherCommand request, CancellationToken cancellationToken)
+    public async Task<TeacherDTO> Handle(AddTeacherCommand request, CancellationToken cancellationToken)
     {
         var teacher = _mapper.Map<Teacher>(request);
         var createUserReq = _mapper.Map<CreateUserDTO>(request);
@@ -29,6 +29,6 @@ public class AddTeacherHandler : IRequestHandler<AddTeacherCommand, AddTeacherDT
         teacher.UserId = createdUserId;
 
         await _teacherRepository.Create(teacher);
-        return _mapper.Map<AddTeacherDTO>(teacher);
+        return _mapper.Map<TeacherDTO>(teacher);
     }
 }

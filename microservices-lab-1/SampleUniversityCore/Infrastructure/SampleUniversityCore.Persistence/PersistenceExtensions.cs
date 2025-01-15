@@ -16,13 +16,12 @@ public static class PersistenceExtensions
             options.UseMySql(connString, ServerVersion.AutoDetect(connString));
         });
 
-
         // services.AddScoped<IUnitOfWork, UnitOfWork>();
         // services.AddScoped<IClassTypeRepository, ClassTypeRepository>();
-        // services.AddScoped<ICourseClassRepository, CourseClassRepository>();
-        // services.AddScoped<ICourseRepository, CourseRepository>();
-        // services.AddScoped<ICourseSectionRepository, CourseSectionRepository>();
-        // services.AddScoped<ISectionRepository, SectionRepository>();
+        services.AddScoped<ICourseClassRepository, CourseClassRepository>();
+        services.AddScoped<ICourseRepository, CourseRepository>();
+        services.AddScoped<ICourseSectionRepository, CourseSectionRepository>();
+        services.AddScoped<ISectionRepository, SectionRepository>();
         // services.AddScoped<IStudentRepository, StudentRepository>();
         services.AddScoped<ITeacherRepository, TeacherRepository>();
     }

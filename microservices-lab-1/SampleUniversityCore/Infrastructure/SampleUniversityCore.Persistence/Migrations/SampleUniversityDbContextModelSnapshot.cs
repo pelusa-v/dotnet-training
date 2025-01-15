@@ -45,7 +45,7 @@ namespace SampleUniversityCore.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ClassTypes");
+                    b.ToTable("ClassTypes", (string)null);
                 });
 
             modelBuilder.Entity("SampleUniversityCore.Domain.Entities.Course", b =>
@@ -81,7 +81,7 @@ namespace SampleUniversityCore.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
                 });
 
             modelBuilder.Entity("SampleUniversityCore.Domain.Entities.CourseClass", b =>
@@ -127,7 +127,7 @@ namespace SampleUniversityCore.Persistence.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("CourseClasses");
+                    b.ToTable("CourseClasses", (string)null);
                 });
 
             modelBuilder.Entity("SampleUniversityCore.Domain.Entities.CourseSection", b =>
@@ -159,7 +159,7 @@ namespace SampleUniversityCore.Persistence.Migrations
 
                     b.HasIndex("SectionId");
 
-                    b.ToTable("CourseSections");
+                    b.ToTable("CourseSections", (string)null);
                 });
 
             modelBuilder.Entity("SampleUniversityCore.Domain.Entities.Section", b =>
@@ -185,7 +185,7 @@ namespace SampleUniversityCore.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sections");
+                    b.ToTable("Sections", (string)null);
                 });
 
             modelBuilder.Entity("SampleUniversityCore.Domain.Entities.Student", b =>
@@ -215,7 +215,7 @@ namespace SampleUniversityCore.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("SampleUniversityCore.Domain.Entities.Teacher", b =>
@@ -245,7 +245,7 @@ namespace SampleUniversityCore.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teachers");
+                    b.ToTable("Teachers", (string)null);
                 });
 
             modelBuilder.Entity("SampleUniversityCore.Domain.Entities.CourseClass", b =>
