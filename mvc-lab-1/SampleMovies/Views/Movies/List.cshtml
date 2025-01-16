@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SampleMovies.Models.Movie>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>All movies!</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <ul>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Movies" asp-action="Get" asp-route-id="@movie.Id">@movie.Title - @movie.Genre</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Movies" asp-action="Update" asp-route-id="@movie.Id">Edit</a> |
+                        <a asp-controller="Movies" asp-action="Delete" asp-route-id="@movie.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </ul>
+    </tbody>
+</table>

@@ -1,9 +1,26 @@
+using Microsoft.EntityFrameworkCore;
+using SampleMovies;
+using SampleMovies.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    var connString = builder.Configuration.GetConnectionString("DbConnection");
+    options.UseMySql(connString, ServerVersion.AutoDetect(connString));
+});
+
 
 var app = builder.Build();
+
+// Seed the database
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    SeedData.InitializeDb(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
