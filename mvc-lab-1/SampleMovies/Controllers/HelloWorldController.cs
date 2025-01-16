@@ -6,13 +6,15 @@ namespace SampleMovies.Controllers;
 // ControllerBase: Base class without View support (used in webapi)
 public class HelloWorldController : Controller
 {
-    public string Index()
+    public IActionResult Index()
     {
-        return "Default action";
+        return View();
     }
 
-    public string SayHello(string name, string lastName, int id = 1)
+    public IActionResult SayHello(string name, int hits = 1)
     {
-        return $"Hello, {name} {lastName}, ID: {id}";
+        ViewData["Message"] = $"Hello {name}";
+        ViewData["Hits"] = hits;
+        return View();
     }
 }
