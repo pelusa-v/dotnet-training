@@ -26,12 +26,37 @@ public class MoviesController : Controller
         return RedirectToAction("List");
     }
 
-    public IActionResult Update(int id)
+    public async Task<IActionResult> Update(int id)
     {
-        // _context.Movies.Update(udpatedMovie);
-        // _context.SaveChanges();
-        // return View();
-        return RedirectToAction("List");
+        var movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
+        if(movie == null)
+        {
+            return NotFound();
+        }
+        return View(movie);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Update(int id, [Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+    {
+        if (id != movie.Id)
+        {
+            return BadRequest();
+        }
+
+        if (!await _context.Movies.AnyAsync(m => m.Id == id))
+        {
+            return NotFound();
+        }
+
+        if (ModelState.IsValid)
+        {
+            _context.Movies.Update(movie);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Get", new { id = movie.Id });
+        }
+        return View(movie);
     }
 
     public async Task<IActionResult> Delete(int id)
