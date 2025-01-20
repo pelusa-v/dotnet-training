@@ -1,0 +1,256 @@
+OOP Interview Test (Backend Developer Position)
+💡 Instructions: Answer each question as if you're in an actual interview. Feel free to explain your reasoning with examples.
+
+1️⃣ OOP Fundamentals
+✅ What are the four pillars of OOP, and how do they help in software development?
+
+2️⃣ Encapsulation & Abstraction
+✅ What is encapsulation, and why is it important?
+✅ Can you give a real-world example of abstraction in backend development?
+
+3️⃣ Inheritance & Polymorphism
+✅ How does inheritance improve code reusability? Give an example.
+✅ What is method overriding, and when should it be used?
+
+4️⃣ SOLID Principles
+✅ Can you explain the Open/Closed Principle (OCP) and give an example?
+✅ What is the Liskov Substitution Principle (LSP), and why does it matter?
+
+5️⃣ Design Patterns & Best Practices
+✅ What is the Repository Pattern, and why would you use it in a backend application?
+✅ How does the Factory Pattern improve maintainability?
+
+6️⃣ Practical Scenario
+✅ Imagine you're designing a payment processing system.
+
+How would you structure the classes and relationships using OOP principles?
+How would you ensure extensibility for new payment methods (e.g., credit card, PayPal, cryptocurrency)?
+
+
+SOLUTION:
+
+1-
+They are:
+- Encapsulation: The ability to have methods, properties, variables, and so on, as part of a class and defining access level for all that information (example: The class EmailSender has a public property called "EmailServer", you can use that property but you need to reference the class first, as object or static, depending of the scenario)
+- Abstraction: The ability of representing an object based on its behavior (specific methods it has), avoiding the detail of that methods (the internal functionality), just focusing in the signature of them (example: The class Car is represented as a IRun interface for other classes to represent that is an entity that has methods "Run" and "Break")
+- Inheritance: The ability to inherit properties, methods and features of a class making a "subclass" to promotes the reusability of code (example: the class Feline has a property "legs", when you create a Lion class, you dont need to setup other legs property, you can inherit from Feline class, and you also can inherit other methods for common felines)
+- Polymorphism: The abilty of an object to execute a different behavior calling a method with the same name and giving part of the same parent class, using method overriding or method overloading. (example: The class Beast has a method Attack, that is a common attack, and the class GhostFeline that inherit from Beast has the method attack overriding the initial behavior, so, when you create an instance of a Beast and GhostFeline, you have two ojbjects of Beast class, but they both show different behavior when you call the method attack)
+
+2- 
+A- Encapsulation is the ability to have methods, properties, variables, and so on, as part of a class and defining access level for all that information. It's important because you can organize and group code (properties, variables, methods) as part o a class, giving the ability to reuse that code, wether using inheritance or making the class as static and providing utility code for others
+B- Yes, Team 1 is developing a class called NetworkIssueNotificator, this class has a method called NotifyIssue, this method has the responsability to send SMS messages to interested destinations, they are developing the logic of this class, but other team, the Team 2 is developing other class in the project called SMSManager that has a method called SendMessage. So the team 1 need that SMSManager class for the NetworkIssueNotificator as a dependency, so they decide to represent the SMSManager class as an interface ISMSSender that has a method signature "SendMessage". So now, the team 1 is working independently from the team 2, they just need the interface to go on work. When the team 2 built the SMSManager class implementing the ISMSSender interface with the SendMessage method, all will works good. This is a good approach because if we need to change the channel of communication of SMS or other sms logic, we only need to change the SMSManager class, giving the NetworkIssueNotificator class independent from this change. This is why our code is decoupled, making it more testable and easy to scale or change.
+
+3-
+A- Inheritance improve code reusability because you don't need to rewrite existing methods or code you need, example: You have the class Vehicle that has a method WarmUp, that method executes some logic over an object of the class called engine. So when I create an Helicopter, Car or Motorcycle class, all of them need a WamUp method, so instead to create a different method WamUp for each class, I can inherit from Vehicle to reuse the WarmUp method in any class that inherits from Vehicle. If I need specific behavior on this method, I can mark the WarmUp method as virtual in Vehicle to give the ability to override the default behavir in some subclasses.
+
+B- Method overriding is the ability to "redefining" a method of a parent class, yo should use method overriding if you need specific behavior o need to change the default behavior of a method of the parent class: example: Parent Class Ship has a method launch, that execute som logic over engine and turbine objects of this class, and the subclasses SpectrePlane, ValkiryaShip, DropShip, StarHelicopter inherit from Ship, but StarHelicopter has a different process to take off because it needs a propeller object, in this scenario, that subclass needs to override the launch method, so we need to mark the launch method in Ship class and override in StarHelicopter, all the other subclasses can just inherit from Ship to have the default launch method
+
+4
+A- Yes, this pattern says ""open for extensions, closed for modifications", meaning that, while you're designing a class, you have to ensure the class can growth in methods, method overloading or properties, but won't require to refactor the current logic of methods for changes (reducing introducing bugs changing core methods, this is for making the class more scalable and easy to adapt). Example: A class called Bottle with a method Fill. If we ignore SOLID, we can make the method like this:
+
+public class BadBottle
+{
+    public object Content { get; private set; }
+
+    public void Fill(object content)
+    {
+        if (content is Soda)
+        {
+            Console.WriteLine("Fizz");
+        }
+        else if (content is Water)
+        {
+            Console.WriteLine("Splash");
+        }
+        Content = content;
+    }
+}
+
+public class Soda
+{
+}
+
+public class Water
+{
+}
+
+If we need to receive Juice tomorrow, we need to add another condition to the fill method with the Juice sound, so this class is not closed for modifications, making the code sensible to changes and easy to introduce bugs. This is how I would do it applying SOLID:
+
+public class Bottle
+{
+    public ILiquid Content { get; private set; }
+
+    public void Fill(ILiquid content)
+    {
+        Content = content;
+        content.Sound();
+    }
+}
+
+public interface ILiquid
+{
+    void Sound();
+}
+
+public class Soda : ILiquid
+{
+    public void Sound()
+    {
+        Console.WriteLine("Fizz");
+    }
+}
+
+public class Water : ILiquid
+{
+    public void Sound()
+    {
+        Console.WriteLine("Splash");
+    }
+}
+
+If we need to add juice, or other liquid, just need to receive other object implementing the ILiquid, so this class now is closed for modifications and open for extensions.
+
+B- 
+This principle point out that we should can replace a class by the subclass on a method that receives the parent class without suffering bugs or problems. This aligns with the phrase "If it barks like a dog, it must be a dog". This is important because we should ensure that subclasses don't break the behavior of the parent class, maintaining the single responsability of all the methods and also using Open closed principle
+
+5-
+A- The repository pattern: You can add an abstraction layer to represent the persistence database, so we don't depend on the infrastructure database details, we just depend on the abstraction, methods that we're interested to apply over the db (CRUD for example). I use this pattern because allow me the ability to change the database engine or infrastructure specification without changing my business code, business code only depends on repository interfaces, not on db directly.
+Example: 
+case 1 (with repository pattern): serviceABC --> IRepositoryA <-- RepositoryA --> db (if change my db, this doesn't affect my services, and it's easy to test because I can replace the repository by an in memory repository implementing the interface for tests porpuses)
+case 1 (without repository pattern): serviceABC --> db (if change my db, we also need to change my serviceABC)
+B- This pattern improve maintainability by having a method that initiates the object having a method for that
+
+6-
+Here is my structure and this is how I manage extensibility for new payment methods, the PaymentProcessor is the main class:
+
+public class PaymentProcessor
+{
+    private INotificator _notificator;
+
+    public PaymentProcessor(INotificator notificator)
+    {
+        _notificator = notificator;    
+    }
+
+    public void UserProcessPayment(User user, Order order)
+    {
+        try
+        {
+            ProcessPayment(user.PaymentMethod, order);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            _notificator.Notify("Payment failed", user);
+            // Log the exception and notify the user
+        }
+
+        _notificator.Notify("Payment successful", user);
+    }
+
+    private void ProcessPayment(IPayable paymentMethod, Order order)
+    {
+        var result = paymentMethod.Pay(order.PaymentData);
+        if (!result)
+            throw new Exception("Payment failed");
+        
+        order.MarkAsPaid();
+    }
+}
+
+public class User
+{
+    public PaymentMethodResource PaymentMethod { get; set; }
+    // Some user data
+    public User(PaymentMethodResource paymentMethod)
+    {
+        PaymentMethod = paymentMethod;
+    }
+}
+
+public interface INotificator
+{
+    void Notify(string message, User user);
+}
+
+public class Order
+{
+    public PaymentDetails PaymentData { get; set; }
+    // Some order data
+    public Order(PaymentDetails paymentData)
+    {
+        PaymentData = paymentData;
+    }
+
+    public void MarkAsPaid()
+    {
+        // Mark order as paid
+    }
+}
+
+public abstract class PaymentMethodResource : IPayable
+{
+    // Some payment resource to reuse across all the resources here
+
+    // Some contract methods (like interface)
+    public abstract bool Pay(PaymentDetails paymentDetails);
+}
+
+public interface IPayable
+{
+    bool Pay(PaymentDetails paymentDetails);
+}
+
+public class CreditCardResource : PaymentMethodResource
+{
+    public string CardNumber { get; set; }
+    public string ExpiryDate { get; set; }
+    public string Cvv { get; set; }
+
+    public override bool Pay(PaymentDetails paymentDetails)
+    {
+        // Credit card payment logic
+        return true;
+    }
+}
+
+public class BankAccountResource : PaymentMethodResource
+{
+    public string AccountNumber { get; set; }
+    public string RoutingNumber { get; set; }
+
+    public override bool Pay(PaymentDetails paymentDetails)
+    {
+        // bank payment logic
+        return true;
+    }
+}
+
+public class CashResource : PaymentMethodResource
+{
+    public string Currency { get; set; }
+    public decimal Amount { get; set; }
+
+    public override bool Pay(PaymentDetails paymentDetails)
+    {
+        // cash payment logic
+        return true;
+    }
+}
+
+public class PayPalResource : PaymentMethodResource
+{
+    public string Email { get; set; }
+    public string Password { get; set; }
+
+    public override bool Pay(PaymentDetails paymentDetails)
+    {
+        // PayPal payment logic
+        return true;
+    }
+}
+
+public class PaymentDetails
+{
+    // Some required payment data (Ammount of money, currency, etc.)
+}

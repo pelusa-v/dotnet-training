@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oop-interview-test-1", "oop-interview-test-1\oop-interview-test-1.csproj", "{52BE8C77-53D4-44FF-A54C-CDD445FADEDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oop-interview-test-2", "oop-interview-test-2\oop-interview-test-2.csproj", "{BE1A79AF-C022-4F73-A9B3-8DD3D1C35FD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{52BE8C77-53D4-44FF-A54C-CDD445FADEDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52BE8C77-53D4-44FF-A54C-CDD445FADEDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52BE8C77-53D4-44FF-A54C-CDD445FADEDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE1A79AF-C022-4F73-A9B3-8DD3D1C35FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE1A79AF-C022-4F73-A9B3-8DD3D1C35FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE1A79AF-C022-4F73-A9B3-8DD3D1C35FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE1A79AF-C022-4F73-A9B3-8DD3D1C35FD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
