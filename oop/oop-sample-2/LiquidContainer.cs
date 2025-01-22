@@ -9,6 +9,12 @@ public abstract class LiquidContainer
     public decimal Contentml { get => _contentml; }
     public decimal RemainingCapacityml { get => _capacityml - _contentml; }
 
+    protected LiquidContainer(decimal capacityml, decimal contentml)
+    {
+        _capacityml = capacityml;
+        _contentml = contentml;
+    }
+
     public LiquidContainer(decimal capacityml)
     {
         _capacityml = capacityml;
@@ -18,7 +24,7 @@ public abstract class LiquidContainer
     {
         if (_contentml < liquidml)
         {
-            throw new Exception("Not enough liquid to drop");
+            throw new NotEnoughLiquidException("Not enough liquid to drop");
         }
         _contentml -= liquidml;
     }
@@ -27,8 +33,23 @@ public abstract class LiquidContainer
     {
         if (_contentml == 0)
         {
-            throw new Exception("No liquid");
+            throw new NotLiquidException("No liquid");
         }
         _contentml = 0;
+    }
+}
+
+
+public class NotEnoughLiquidException : Exception
+{
+    public NotEnoughLiquidException(string message) : base(message)
+    {
+    }
+}
+
+public class NotLiquidException : Exception
+{
+    public NotLiquidException(string message) : base(message)
+    {
     }
 }

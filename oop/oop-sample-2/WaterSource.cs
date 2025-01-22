@@ -1,36 +1,37 @@
 ﻿namespace oop_sample_2;
 
-public class WaterSource : LiquidContainer
+public class WaterSource
 {
-    private bool _infinitelyAvailable = false;
+    private LiquidContainer? _internalContainer = null;
 
-    public WaterSource(bool infinite) : base(decimal.MaxValue)
+    private bool InfinitelyAvailable() => _internalContainer == null;
+
+    public WaterSource()
     {
-        _infinitelyAvailable = infinite;
-        _contentml = decimal.MaxValue;
     }
 
-    public WaterSource(decimal capacityml) : base(capacityml)
+    public WaterSource(LiquidContainer container)
     {
-        _contentml = capacityml;
-    }
-
-    public override void DropLiquid(decimal liquidml)
-    {
-        if (!_infinitelyAvailable)
-            base.DropLiquid(liquidml);
+        _internalContainer = container;
     }
 
     public void FillContainer(IDrinkableContainer container)
     {
-        if (_contentml <= container.RemainingCapacityml)
+        if (InfinitelyAvailable())
         {
-            DropLiquid(_contentml);
-            container.Fill(_contentml);
+            container.Fill();
+            return;
+        }
+        
+        var availableLiquid = _internalContainer.Contentml;
+        if (_internalContainer.Contentml <= container.RemainingCapacityml)
+        {
+            _internalContainer.DropLiquid(availableLiquid);
+            container.Fill(availableLiquid);
         }
         else
         {
-            DropLiquid(container.RemainingCapacityml);
+            _internalContainer.DropLiquid(container.RemainingCapacityml);
             container.Fill();
         }
     }

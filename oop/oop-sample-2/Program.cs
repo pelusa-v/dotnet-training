@@ -3,17 +3,18 @@ using oop_sample_2;
 
 
 
-var percy = new ThirstyHuman("Percy");
-
 // case 1:
-var bottle = new WaterSource(1500);
+var bottle = new Bottle(1500);
+var bottleSource = new WaterSource(bottle);
 var glass = new Glass(200);
 
-percy.Drink(bottle, glass);
+var percy = new ThirstyHuman("Percy", bottleSource, glass);
+percy.Drink();
 
 
 // case 2:
-var faucet = new WaterSource(true);
+var faucet = new WaterSource();
 var mug = new Mug(500);
+percy.GrabUtensils(faucet, mug);
 
-percy.Drink(faucet, mug);
+percy.Drink();

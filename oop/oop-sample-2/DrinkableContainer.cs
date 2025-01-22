@@ -2,9 +2,8 @@
 
 public class DrinkableContainer : LiquidContainer, IDrinkableContainer
 {
-    public DrinkableContainer(decimal capacityml) : base(capacityml)
+    public DrinkableContainer(decimal capacityml) : base(capacityml, 0)
     {
-        _contentml = 0;
     }
 
     public void Fill()
@@ -20,11 +19,5 @@ public class DrinkableContainer : LiquidContainer, IDrinkableContainer
     public void Drink()
     {
         DropLiquid();
-    }
-
-    public void Try()
-    {
-        Fill();
-        Drink();
     }
 }
