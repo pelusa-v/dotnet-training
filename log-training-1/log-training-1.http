@@ -1,6 +1,0 @@
-@log_training_1_HostAddress = http://localhost:5164
-
-GET {{log_training_1_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
