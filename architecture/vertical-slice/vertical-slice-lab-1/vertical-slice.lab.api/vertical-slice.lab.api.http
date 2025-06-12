@@ -1,0 +1,6 @@
+@vertical_slice.lab.api_HostAddress = http://localhost:5071
+
+GET {{vertical_slice.lab.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
